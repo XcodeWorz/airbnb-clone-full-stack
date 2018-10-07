@@ -1,7 +1,7 @@
+import { register } from "./../modules/user/register";
+
 const Mutation = {
-  hello: name => {
-    return `Hello ${name}`;
-  }
+  register
 };
 
 module.exports = { Mutation };
