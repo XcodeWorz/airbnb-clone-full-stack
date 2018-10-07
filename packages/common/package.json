@@ -1,0 +1,22 @@
+{
+  "name": "@airbnb-clone/common",
+  "version": "1.0.0",
+  "main": "dist/index.js",
+  "private": false,
+  "license": "MIT",
+  "scripts": {
+    "start": "nodemon src/index.js --exec babel-node",
+    "build": "babel src -d dist"
+  },
+  "dependencies": {
+    "yup": "^0.26.3"
+  },
+  "devDependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-core": "^6.26.3",
+    "babel-preset-env": "^1.7.0",
+    "babel-preset-es2015": "^6.24.1",
+    "eslint-config-airbnb-base": "^13.1.0",
+    "eslint-plugin-import": "^2.14.0"
+  }
+}
