@@ -1,0 +1,4 @@
+type AuthResponse {
+  errors: [Error!]
+  token: String
+}

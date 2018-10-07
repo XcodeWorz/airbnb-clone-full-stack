@@ -1,7 +1,20 @@
+# import AuthResponse from "./modules/user/authResponse.graphql"
+
+type Error {
+  path: String
+  message: String
+}
+
 type Query {
   test: String!
 }
 
 type Mutation {
-  hello(name: String): String!
+  register(
+    email: String!
+    firstName: String!
+    lastName: String!
+    password: String!
+    confirmPassword: String!
+  ): AuthResponse!
 }
