@@ -17,4 +17,5 @@ type Mutation {
     password: String!
     confirmPassword: String!
   ): AuthResponse!
+  login(email: String!, password: String!): AuthResponse!
 }
