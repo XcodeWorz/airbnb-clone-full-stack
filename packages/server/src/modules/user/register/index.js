@@ -2,9 +2,7 @@ import { User } from "../../../models";
 import jwt from "jsonwebtoken";
 import config from "./../../../config";
 
-import * as common from "@airbnb-clone/common";
-console.log(common);
-const { userMessages, validUserSchema } = common;
+import { userMessages, validUserSchema } from "@airbnb-clone/common";
 
 import { handleErrors } from "./../../../utils/handleErrors";
 import { formatYupErrors } from "./../../../utils/formatYupErrors";
