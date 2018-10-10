@@ -18,7 +18,10 @@
   "license": "ISC",
   "dependencies": {
     "bcrypt-nodejs": "^0.0.3",
+    "connect-redis": "^3.4.0",
+    "express-session": "^1.15.6",
     "graphql-yoga": "^1.16.2",
+    "ioredis": "^4.0.2",
     "jest": "^23.6.0",
     "jsonwebtoken": "^8.3.0",
     "mongoose": "^5.3.1",
