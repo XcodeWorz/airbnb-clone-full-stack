@@ -5,7 +5,7 @@ import { userMessages, validLoginSchema } from "@airbnb-clone/common";
 
 import config from "./../../../config/index";
 
-export const login = async (_, { email, password }) => {
+export const login = async (_, { email, password }, { session }) => {
   const user = await User.findOne({ email });
 
   if (!user) {
@@ -22,6 +22,8 @@ export const login = async (_, { email, password }) => {
     { _id: user._id, email: user.email },
     config.JWT_SECRET
   );
+
+  session.userId = user.id;
 
   return { token };
 };
