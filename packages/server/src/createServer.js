@@ -1,24 +1,25 @@
-const { GraphQLServer } = require("graphql-yoga");
-const { importSchema } = require("graphql-import");
+const { GraphQLServer } = require('graphql-yoga');
+const { importSchema } = require('graphql-import');
 
-const resolvers = require("./resolvers");
-const connectDatabase = require("./db");
+const resolvers = require('./resolvers');
+const connectDatabase = require('./db');
 
 const db = connectDatabase();
 
 function createServer(redis) {
   return new GraphQLServer({
-    typeDefs: importSchema("src/schema.graphql"),
+    typeDefs: importSchema('src/schema.graphql'),
     resolverValidationOptions: {
-      requireResolversForResolveType: false
+      requireResolversForResolveType: false,
     },
     resolvers,
-    context: ({ request, db }) => ({
+    context: ({ request }) => ({
+      request,
       redis,
-      url: request.protocol + "://" + request.get("host"),
+      url: `${request.protocol}://${request.get('host')}`,
       session: request.session,
-      db
-    })
+      db,
+    }),
   });
 }
 
