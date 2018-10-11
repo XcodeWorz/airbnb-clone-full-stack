@@ -1,7 +1,7 @@
+import { me } from "./../modules/user/me";
+
 const Query = {
-  test: () => {
-    return "test";
-  }
+  me
 };
 
 module.exports = { Query };
