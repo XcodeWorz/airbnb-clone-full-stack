@@ -1,4 +1,6 @@
 # import AuthResponse from "./modules/user/authResponse.graphql"
+# import ProfileResponse from "./modules/user/authResponse.graphql"
+# import User from "./modules/user/user.graphql"
 
 type Error {
   path: String
@@ -6,7 +8,7 @@ type Error {
 }
 
 type Query {
-  test: String!
+  me: ProfileResponse
 }
 
 type Mutation {
