@@ -21,4 +21,6 @@ type Mutation {
   ): AuthResponse!
   login(email: String!, password: String!): AuthResponse!
   logout: Boolean!
+  sendForgotPasswordEmail(email: String!): Boolean
+  changePassword(newPassword: String!, key: String!): [Error]
 }
