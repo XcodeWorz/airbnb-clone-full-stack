@@ -1,10 +1,9 @@
-import config from './config';
-
 const session = require('express-session');
 const RedisStore = require('connect-redis')(session);
 
 const { GraphQLServer } = require('graphql-yoga');
 const { importSchema } = require('graphql-import');
+const config = require('./config');
 
 const redis = require('./redis');
 const { redisSessionPrefix } = require('./utils/constants');
