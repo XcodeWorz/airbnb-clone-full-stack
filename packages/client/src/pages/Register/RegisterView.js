@@ -15,7 +15,7 @@ class RegisterView extends Component {
     return <ErrorMessage errors={errors} />;
   };
   render() {
-    const { handleSubmit, errors, data } = this.props;
+    const { handleSubmit, data } = this.props;
 
     return (
       <Form onSubmit={handleSubmit} className="login-form">
