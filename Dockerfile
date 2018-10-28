@@ -11,8 +11,8 @@ COPY ./packages/common/package.json ./packages/common/
 RUN npm i -g yarn
 RUN yarn install
 
-COPY ./packages/server/. ./packages/server
-COPY ./packages/common/. ./packages/common
+COPY ./packages/server/dist ./packages/server/
+COPY ./packages/common/dist ./packages/common/
 
 WORKDIR ./packages/server/src
 
