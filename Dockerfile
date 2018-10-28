@@ -1,18 +1,25 @@
 FROM node
 
-WORKDIR /abb
+RUN npm install nodemon -g
+
+WORKDIR /airbnb-clone
 
 COPY ./package.json .
 COPY ./packages/server/package.json ./packages/server/
 COPY ./packages/common/package.json ./packages/common/
 
 RUN npm i -g yarn
-RUN yarn install --production
+RUN yarn install
 
-COPY ./packages/server/dist ./packages/server/dist
-COPY ./packages/common/dist ./packages/common/dist
+COPY ./packages/server/. ./packages/server
+COPY ./packages/common/. ./packages/common
 
-WORKDIR ./packages/server
+WORKDIR ./packages/server/src
 
+ENV NODE_ENV development
 
-CMD ["node", "dist/index.js"]
+EXPOSE 4000
+
+RUN ls
+
+CMD ["nodemon", "index.js", "--exec babel-node"]
