@@ -1,11 +1,10 @@
-import { User } from "../../../models";
-import jwt from "jsonwebtoken";
-import config from "./../../../config";
+import jwt from 'jsonwebtoken';
+import { userMessages, validUserSchema } from '@airbnb-clone/common';
+import { User } from '../../../models';
+import config from '../../../config';
 
-import { userMessages, validUserSchema } from "@airbnb-clone/common";
-
-import { handleErrors } from "./../../../utils/handleErrors";
-import { formatYupErrors } from "./../../../utils/formatYupErrors";
+import { handleErrors } from '../../../utils/handleErrors';
+import { formatYupErrors } from '../../../utils/formatYupErrors';
 
 export const register = async (_, { email, ...rest }) => {
   try {
@@ -13,18 +12,15 @@ export const register = async (_, { email, ...rest }) => {
     const userAlreadyExists = await User.findOne({ email });
 
     if (userAlreadyExists) {
-      return handleErrors("email", userMessages.emailAlreadyExists);
+      return handleErrors('email', userMessages.emailAlreadyExists);
     }
 
     const user = await User.create({
       email,
-      ...rest
+      ...rest,
     });
 
-    const token = jwt.sign(
-      { _id: user._id, email: user.email },
-      config.JWT_SECRET
-    );
+    const token = jwt.sign({ _id: user._id, email: user.email }, config.JWT_SECRET);
 
     return { token };
   } catch (e) {
