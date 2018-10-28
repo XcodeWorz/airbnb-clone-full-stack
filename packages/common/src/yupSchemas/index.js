@@ -1,3 +1,14 @@
-import { loginSchema, validUserSchema } from "./user";
+import {
+  loginSchema,
+  validUserSchema,
+  emailSchema,
+  changePasswordSchema
+} from "./user";
 
-module.exports = { loginSchema, validUserSchema };
+module.exports = {
+  loginSchema,
+  validUserSchema,
+  changePasswordSchema,
+  emailSchema,
+  changePasswordSchema
+};

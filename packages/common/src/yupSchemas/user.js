@@ -41,3 +41,10 @@ export const loginSchema = yup.object().shape({
   email: emailValidation,
   password: registerPasswordValidation
 });
+
+export const emailSchema = yup.object().shape({
+  email: emailValidation
+});
+export const changePasswordSchema = yup.object().shape({
+  newPassword: registerPasswordValidation
+});
