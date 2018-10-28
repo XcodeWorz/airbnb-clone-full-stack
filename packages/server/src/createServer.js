@@ -21,7 +21,7 @@ const createServer = () => {
     },
     resolvers,
     context: ({ request }) => ({
-      request,
+      req: request,
       redis,
       url: `${request.protocol}://${request.get('host')}`,
       session: request.session,
