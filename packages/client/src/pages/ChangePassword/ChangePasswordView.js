@@ -17,15 +17,9 @@ class ChangePasswordView extends Component {
     const { handleSubmit, data } = this.props;
     return (
       <Form onSubmit={handleSubmit} className="login-form">
-        {data && data.changePassword && data.changePassword.path
-          ? this.showError([
-              {
-                path: data.changePassword.path,
-                message: data.changePassword.message
-              }
-            ])
+        {data && data.changePassword.errors
+          ? this.showError(data.changePassword.errors)
           : null}
-
         <FormItem>
           <Field
             name="newPassword"

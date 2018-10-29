@@ -8,8 +8,11 @@ import ChangePasswordView from "./ChangePasswordView";
 const CHANGE_PASSWORD_MUTATION = gql`
   mutation CHANGE_PASSWORD_MUTATION($newPassword: String!, $key: String!) {
     changePassword(newPassword: $newPassword, key: $key) {
-      path
-      message
+      errors {
+        path
+        message
+      }
+      result
     }
   }
 `;
@@ -17,13 +20,19 @@ const CHANGE_PASSWORD_MUTATION = gql`
 class ChangePassword extends Component {
   onFinish = values => {
     const {
-      data: { changePassword }
+      data: {
+        changePassword: { errors, result }
+      }
     } = values;
-    if (!changePassword) {
+
+    if (errors && errors.length) {
+      return null;
+    }
+
+    if (result) {
       const { history } = this.props;
       history.push("/login");
     }
-    return null;
   };
   render() {
     const {
