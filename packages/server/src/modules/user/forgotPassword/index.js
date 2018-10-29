@@ -3,7 +3,10 @@ import { hashSync } from "bcrypt-nodejs";
 import { changePasswordSchema } from "@airbnb-clone/common";
 import config from "../../../config";
 import { User } from "../../../models";
-import { forgotPasswordPrefix } from "../../../utils/constants";
+import {
+  forgotPasswordPrefix,
+  userSessionIdPrefix
+} from "../../../utils/constants";
 import { handleErrors } from "../../../utils/handleErrors";
 import { createForgotPasswordLink } from "../../../utils/createForgotPasswordLink";
 import { formatYupErrors } from "../../../utils/formatYupErrors";
@@ -27,7 +30,11 @@ export const sendForgotPasswordEmail = async (_, { email }, { redis }) => {
   return true;
 };
 
-export const changePassword = async (_, { newPassword, key }, { redis }) => {
+export const changePassword = async (
+  _,
+  { newPassword, key },
+  { redis, req, session }
+) => {
   const redisKey = `${forgotPasswordPrefix}${key}`;
 
   try {
@@ -45,9 +52,14 @@ export const changePassword = async (_, { newPassword, key }, { redis }) => {
       }
     );
 
-    // await redis.del(redisKey);
+    await redis.del(redisKey);
 
-    return null;
+    session.userId = user.id;
+    if (req.sessionID) {
+      await redis.lpush(`${userSessionIdPrefix}${userId}`, req.sessionID);
+    }
+
+    return { result: true };
   } catch (err) {
     const { path, message } = formatYupErrors(err)[0];
     return handleErrors(path, message);
