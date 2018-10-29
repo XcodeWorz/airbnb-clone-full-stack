@@ -14,6 +14,15 @@ const FORGOT_PASSWORD_MUTATION = gql`
 class ForgotPassword extends Component {
   onFinish = values => {
     console.log(values);
+    const {
+      data: { sendForgotPasswordEmail }
+    } = values;
+    if (sendForgotPasswordEmail) {
+      const { history } = this.props;
+      history.push("/m", {
+        message: "Please, check your email to change your password!"
+      });
+    }
     return null;
   };
   render() {
