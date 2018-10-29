@@ -15,10 +15,9 @@ class ChangePasswordView extends Component {
   };
   render() {
     const { handleSubmit, data } = this.props;
-    console.log(data);
     return (
       <Form onSubmit={handleSubmit} className="login-form">
-        {data && data.changePassword.path
+        {data && data.changePassword && data.changePassword.path
           ? this.showError([
               {
                 path: data.changePassword.path,
@@ -60,7 +59,6 @@ export default withFormik({
           key: props.token
         }
       });
-      console.log(data);
       if (data) await props.onFinish(data);
     } catch (e) {
       console.log(e);
