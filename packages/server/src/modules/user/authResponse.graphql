@@ -1,3 +1,8 @@
+type ForgetPasswordResponse {
+  errors: [Error!]
+  result: Boolean
+}
+
 type AuthResponse {
   errors: [Error!]
   token: String
