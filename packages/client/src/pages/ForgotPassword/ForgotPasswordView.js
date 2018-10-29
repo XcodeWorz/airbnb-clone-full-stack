@@ -50,7 +50,6 @@ export default withFormik({
   handleSubmit: async (values, { props }) => {
     try {
       const data = await props.sendForgotPasswordEmail({ variables: values });
-      console.log("data", data);
       if (data) await props.onFinish(data);
     } catch (e) {
       console.log(e);
