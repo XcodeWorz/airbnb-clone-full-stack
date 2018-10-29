@@ -5,6 +5,8 @@ import Register from "./../pages/Register";
 import Login from "./../pages/Login";
 import ForgotPassword from "./../pages/ForgotPassword";
 import ChangePassword from "../pages/ChangePassword";
+import ActionScreen from "./../pages/ActionScreen";
+
 import FancyRoute from "./../components/FancyRoute";
 
 export const Routes = () => (
@@ -18,6 +20,7 @@ export const Routes = () => (
         path="/change-password/:key"
         component={ChangePassword}
       />
+      <FancyRoute path="/m/" component={ActionScreen} />
     </Switch>
   </BrowserRouter>
 );
