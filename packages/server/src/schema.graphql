@@ -1,5 +1,6 @@
 # import AuthResponse from "./modules/user/authResponse.graphql"
 # import ProfileResponse from "./modules/user/authResponse.graphql"
+# import ForgetPasswordResponse from "./modules/user/authResponse.graphql"
 # import User from "./modules/user/user.graphql"
 
 type Error {
@@ -22,5 +23,5 @@ type Mutation {
   login(email: String!, password: String!): AuthResponse!
   logout: Boolean!
   sendForgotPasswordEmail(email: String!): Boolean
-  changePassword(newPassword: String!, key: String!): [Error]
+  changePassword(newPassword: String!, key: String!): ForgetPasswordResponse!
 }
