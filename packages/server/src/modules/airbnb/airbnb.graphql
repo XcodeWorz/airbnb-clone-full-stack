@@ -14,3 +14,21 @@ input Location {
   type: String!
   coordinates: [Float]!
 }
+
+type LocationType {
+  type: String!
+  coordinates: [Float]!
+}
+
+type Airbnb {
+  _id: ID!
+  name: String!
+  description: String!
+  category: String!
+  price: Float!
+  guests: Int!
+  beds: Int!
+  baths: Int!
+  location: LocationType!
+  amenities: [String]
+}
