@@ -3,6 +3,7 @@ import { BrowserRouter, Switch } from "react-router-dom";
 
 import Register from "./../pages/Register";
 import Login from "./../pages/Login";
+import Home from "./../pages/Home";
 import ForgotPassword from "./../pages/ForgotPassword";
 import ChangePassword from "../pages/ChangePassword";
 import ActionScreen from "./../pages/ActionScreen";
@@ -12,6 +13,7 @@ import FancyRoute from "./../components/FancyRoute";
 export const Routes = () => (
   <BrowserRouter>
     <Switch>
+      <FancyRoute exact path="/" component={Home} />
       <FancyRoute exact path="/register" component={Register} />
       <FancyRoute exact path="/login" component={Login} />
       <FancyRoute exact path="/forgot-password" component={ForgotPassword} />
