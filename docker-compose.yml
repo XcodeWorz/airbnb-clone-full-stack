@@ -1,10 +1,28 @@
-version: "2"
+version: "3"
 services:
+  server:
+    container_name: airbnb-clone-server
+    build: ./packages/server
+    # command: bash -c "cd ./packages/server && ./node_modules/.bin/nodemon src/index.js --exec ./node_modules/.bin/babel-node"
+    command: bash -c "cd ./packages/server && npm run start"
+    ports:
+      - "4000:4000"
+    depends_on:
+      - mongo
+      - redis
+    environment:
+      - NODE_ENV=test
+    links:
+      - mongo
+    volumes:
+      - .:/src
   mongo:
+    container_name: airbnb-clone-mongo
     image: mongo
     ports:
       - "27017:27017"
   redis:
+    container_name: airbnb-clone-redis
     image: redis
     ports:
       - "6379:6379"
