@@ -1,12 +1,12 @@
 import mongoose from 'mongoose';
-import AmenitiySchema from './Amenity';
-import LocationSchema from './Location';
+import { AmenitiySchema } from './Amenity';
+import { LocationSchema } from './Location';
 
 const AirbnbSchema = new mongoose.Schema(
   {
     name: String,
     description: String,
-    location: { type: LocationSchema },
+    location: LocationSchema,
     price: Number,
     pictures: String,
     category: {
@@ -16,9 +16,8 @@ const AirbnbSchema = new mongoose.Schema(
     guests: Number,
     beds: { type: Number, default: 1 },
     baths: { type: Number, default: 1 },
-    baths: { type: Number, default: 1 },
-    host: { type: mongoose.Schema.Types.ObjectId, ref: 'User', required: true },
-    amenities: [AmenitiySchema],
+    host: { type: mongoose.Schema.Types.ObjectId, ref: 'User' },
+    amenities: [{ type: String, enum: ['wifi', 'parking', 'swimmingpool'] }],
   },
   { timestamps: true },
 );
