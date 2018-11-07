@@ -1,22 +1,19 @@
-import jwt from 'jsonwebtoken';
-
 import { User } from '../../../models';
 import { handleErrors } from '../../../utils/handleErrors';
-import config from '../../../config';
+import { formatYupErrors } from '../../../utils/formatYupErrors';
+import middleware from './middleware';
+import { createMiddleware } from '../../../utils/createMiddleware';
 
-export const me = async (_, __, { request, session }) => {
-  let token = request.get('Authorization');
+export const me = async (_, __, { req }) => {
+  try {
+    if (!req.session.userId) return handleErrors('session', 'invalid session');
 
-  let userId;
-  if (token) {
-    token = token.split(' ')[1];
-    const { _id } = jwt.verify(token, config.JWT_SECRET);
+    const user = await User.findById(req.session.userId);
+    if (!user) return handleErrors('session', 'invalid session');
 
-    userId = _id;
-  } else {
-    return handleErrors('token', 'invalid');
+    return { result: user };
+  } catch (err) {
+    const { path, message } = formatYupErrors(err)[0];
+    return handleErrors(path, message);
   }
-  const user = await User.findById(userId);
-
-  return { result: user };
 };

@@ -1,74 +1,50 @@
 import * as faker from 'faker';
 import { request, GraphQLClient } from 'graphql-request';
+
 import config from '../../../config';
 import { User } from '../../../models';
 
 import { connectMongoose, clearDatabase } from '../../../utils/test/helpers';
 
-const SERVER_URL = process.env.SERVER_URL || config.SERVER_URL;
-let token;
+import { TestClient } from '../../../utils/test/TestClient';
 
-beforeAll(connectMongoose);
-afterAll(clearDatabase);
+const SERVER_URL = process.env.SERVER_URL || config.SERVER_URL;
 
 describe('Get user profile', () => {
+  beforeAll(async () => {
+    await connectMongoose();
+  });
+  afterAll(async () => {
+    await clearDatabase();
+  });
+  const client = new TestClient(SERVER_URL);
   const email = faker.internet.email();
   const firstName = faker.name.firstName();
   const lastName = faker.name.lastName();
   const password = faker.internet.password();
 
-  const meQuery = () => `
-  {
-    me {
-      errors {
-        path
-        message
-      }
-      result {
-          email
-      }
-    }
-  }
-  `;
+  it('should fail if no cookie has been set', async () => {
+    const result = await client.me();
+    expect(result.data.me.errors[0].path).toBe('session');
+  });
 
-  const mutation = (email, password) => `
-      mutation {
-        login(email: "${email}", password: "${password}") {
-          errors {
-            path
-            message
-          }
-          token
-        }
-      }
-      `;
-  it('should get user token from login', async () => {
-    await User.create({
+  it('should get user profile using login cookie', (done) => {
+    let user;
+    User.create({
       email,
       firstName,
       lastName,
       password,
-    });
-
-    const result = await request(SERVER_URL, mutation(email, password));
-    token = result.login.token;
-  });
-
-  it('should get user profile using login token', async () => {
-    const client = new GraphQLClient(SERVER_URL, {
-      headers: {
-        Authorization: `Bearer ${token}`,
-      },
-    });
-    const result = await client.request(meQuery());
-    expect(result.me.result.email).toBe(email);
-  });
-
-  it('should fail if no token is sent in Authorization header', async () => {
-    const client = new GraphQLClient(SERVER_URL, {
-      headers: {},
-    });
-    const result = await client.request(meQuery());
-    expect(result.me.errors[0].path).toBe('token');
+      confirmed: true,
+    })
+      .then((result) => {
+        user = result;
+        return client.login(user.email, password);
+      })
+      .then(() => client.me())
+      .then((result) => {
+        expect(result.data.me.result.email).toBe(email);
+        done();
+      });
   });
 });
