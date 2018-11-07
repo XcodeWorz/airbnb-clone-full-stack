@@ -4,7 +4,7 @@
   "description": "Airbnb clone Server",
   "main": "src/index.js",
   "scripts": {
-    "start": "nodemon src/index.js --exec babel-node",
+    "start": "NODE_ENV=development nodemon src/index.js --exec babel-node",
     "clean": "rm -rf dist && mkdir dist",
     "build-babel": "babel -d ./dist ./src",
     "build": "npm run clean && npm run build-babel",
