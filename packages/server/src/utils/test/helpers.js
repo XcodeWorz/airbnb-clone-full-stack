@@ -1,32 +1,39 @@
-const mongoose = require("mongoose");
-const config = require("./../../config/test.config");
+const mongoose = require('mongoose');
+const config = require('./../../config/test.config');
 
-export async function connectMongoose() {
-  jest.setTimeout(20000);
-  return mongoose.connect(config.DATABASE_URI);
+const dbUri = process.env.DATABASE_URI
+  || `mongodb://${
+    !process.env.NODE_ENV || process.env.NODE_ENV === 'test' ? 'localhost' : 'mongo'
+  }:27017/${config.DATABASE_URI}`;
+
+export function connectMongoose() {
+  mongoose.connect(
+    dbUri,
+    { useNewUrlParser: true, useCreateIndex: true },
+  );
 }
 
-export async function clearDatabase() {
-  await mongoose.connection.db.dropDatabase();
+export function clearDatabase() {
+  if (mongoose && mongoose.connection && mongoose.connection.db) mongoose.connection.db.dropDatabase();
 }
 
-export async function disconnectMongoose() {
-  await mongoose.disconnect();
-  mongoose.connections.forEach(connection => {
+export function disconnectMongoose() {
+  mongoose.disconnect();
+  mongoose.connections.forEach((connection) => {
     const modelNames = Object.keys(connection.models);
 
-    modelNames.forEach(modelName => {
+    modelNames.forEach((modelName) => {
       delete connection.models[modelName];
     });
 
     const collectionNames = Object.keys(connection.collections);
-    collectionNames.forEach(collectionName => {
+    collectionNames.forEach((collectionName) => {
       delete connection.collections[collectionName];
     });
   });
 
   const modelSchemaNames = Object.keys(mongoose.modelSchemas);
-  modelSchemaNames.forEach(modelSchemaName => {
+  modelSchemaNames.forEach((modelSchemaName) => {
     delete mongoose.modelSchemas[modelSchemaName];
   });
 }
