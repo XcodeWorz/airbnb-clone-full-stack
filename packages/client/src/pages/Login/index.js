@@ -12,7 +12,7 @@ const LOGIN_MUTATION = gql`
         path
         message
       }
-      token
+      session
     }
   }
 `;
