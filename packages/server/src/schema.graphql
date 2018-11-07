@@ -1,4 +1,5 @@
 # import AuthResponse from "./modules/user/authResponse.graphql"
+# import RegisterResponse from "./modules/user/authResponse.graphql"
 # import ProfileResponse from "./modules/user/authResponse.graphql"
 # import ForgetPasswordResponse from "./modules/user/authResponse.graphql"
 # import User from "./modules/user/user.graphql"
@@ -19,7 +20,7 @@ type Mutation {
     lastName: String!
     password: String!
     confirmPassword: String!
-  ): AuthResponse!
+  ): RegisterResponse!
   login(email: String!, password: String!): AuthResponse!
   logout: Boolean!
   sendForgotPasswordEmail(email: String!): Boolean
