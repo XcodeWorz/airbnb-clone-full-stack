@@ -1,6 +1,6 @@
 const redis = require('redis');
 
-const redisHost = process.env.NODE_ENV === 'test' ? '127.0.0.1' : 'redis';
+const redisHost = process.env.NODE_ENV === 'production' ? 'redis' : '127.0.0.1';
 const redisPort = '6379';
 let client;
 if (process.env.REDIS_URL) {

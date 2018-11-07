@@ -4,9 +4,9 @@ const config = require('./config');
 mongoose.Promise = global.Promise;
 
 const dbUri = process.env.DATABASE_URI
-  || `mongodb://${
-    !process.env.NODE_ENV || process.env.NODE_ENV === 'test' ? 'localhost' : 'mongo'
-  }:27017/${config.DATABASE_URI}`;
+  || `mongodb://${process.env.NODE_ENV === 'production' ? 'mongo' : 'localhost'}:27017/${
+    config.DATABASE_URI
+  }`;
 
 export const connectDatabase = () => mongoose
   .connect(
