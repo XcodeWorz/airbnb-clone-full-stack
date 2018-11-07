@@ -5,7 +5,12 @@ type ForgetPasswordResponse {
 
 type AuthResponse {
   errors: [Error!]
-  token: String
+  session: String
+}
+
+type RegisterResponse {
+  errors: [Error!]
+  result: Boolean
 }
 
 type ProfileResponse {
