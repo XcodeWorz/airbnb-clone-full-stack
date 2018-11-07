@@ -1,5 +1,20 @@
-const Redis = require('ioredis');
+const redis = require('redis');
 
-const redis = new Redis();
+const redisHost = process.env.NODE_ENV === 'test' ? '127.0.0.1' : 'redis';
+const redisPort = '6379';
+let client;
+if (process.env.REDIS_URL) {
+  client = redis.createClient(process.env.REDIS_URL);
+} else {
+  client = redis.createClient(redisPort, redisHost);
+}
 
-module.exports = redis;
+client.on('connect', () => {
+  console.log(`[👂🏻 ] Redis connected to ${redisHost}:${redisPort}`);
+});
+
+client.on('error', (err) => {
+  console.log(`[❌ ] Redis could not connect to ${redisHost}:${redisPort}: ${err}`);
+});
+
+module.exports = client;
