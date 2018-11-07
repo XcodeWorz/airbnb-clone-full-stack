@@ -1,6 +1,7 @@
 import { User } from '../../../models';
 import { handleErrors } from '../../../utils/handleErrors';
 import { formatYupErrors } from '../../../utils/formatYupErrors';
+
 import middleware from './middleware';
 import { createMiddleware } from '../../../utils/createMiddleware';
 

@@ -1,5 +1,4 @@
-import { validUserSchema } from '../../../utils/common/yupSchemas/user';
-import { userMessages } from '../../../utils/common/utils/validationMessages/userMessages';
+import { userMessages, validUserSchema } from '@airbnb-clone/common';
 import { User } from '../../../models';
 import { createConfirmEmailLink } from '../../../utils/createConfirmEmailLink';
 

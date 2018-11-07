@@ -1,4 +1,5 @@
-import { userMessages } from '../../../utils/common/utils/validationMessages/userMessages';
+import { userMessages } from '@airbnb-clone/common';
+
 import { User } from '../../../models';
 import { handleErrors } from '../../../utils/handleErrors';
 import { userSessionIdPrefix } from '../../../utils/constants';

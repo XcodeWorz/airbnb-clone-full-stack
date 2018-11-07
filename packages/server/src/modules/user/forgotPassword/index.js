@@ -1,6 +1,6 @@
 import { hashSync } from 'bcrypt-nodejs';
 
-import { changePasswordSchema } from '../../../utils/common/yupSchemas/user';
+import { changePasswordSchema } from '@airbnb-clone/common';
 import config from '../../../config';
 import { User } from '../../../models';
 import { forgotPasswordPrefix, userSessionIdPrefix } from '../../../utils/constants';
