@@ -1,4 +1,7 @@
 {
-  "presets": ["es2015", "stage-2", "env", "flow"],
-  "retainLines": true
+  "presets": ["@babel/preset-env"],
+  "plugins": [
+    "@babel/plugin-transform-regenerator",
+    "@babel/plugin-transform-runtime"
+  ]
 }
