@@ -1,6 +1,6 @@
 import * as faker from 'faker';
+import { userMessages } from '@airbnb-clone/common';
 import { TestClient } from '../../../utils/test/TestClient';
-import { userMessages } from '../../../utils/common/utils/validationMessages/userMessages';
 import config from '../../../config';
 import { User } from '../../../models';
 

@@ -1,7 +1,7 @@
 import * as faker from 'faker';
+import { userMessages } from '@airbnb-clone/common';
 import { TestClient } from '../../../utils/test/TestClient';
 import { createForgotPasswordLink } from '../../../utils/createForgotPasswordLink';
-import { userMessages } from '../../../utils/common/utils/validationMessages/userMessages';
 import config from '../../../config';
 import { User } from '../../../models';
 import { connectMongoose, clearDatabase } from '../../../utils/test/helpers';
