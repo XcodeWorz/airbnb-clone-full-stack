@@ -1,10 +1,8 @@
-export const handleErrors = (path, message) => {
-  return {
-    errors: [
-      {
-        path,
-        message
-      }
-    ]
-  };
-};
+export const handleErrors = (path, message) => ({
+  errors: [
+    {
+      path,
+      message,
+    },
+  ],
+});

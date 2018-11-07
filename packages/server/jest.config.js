@@ -1,9 +1,9 @@
-const ignoredPaths = ["<rootDir>/node_modules/", "<rootDir>/dist"];
+const ignoredPaths = ['<rootDir>/node_modules/', '<rootDir>/dist'];
 
 module.exports = {
   transform: {
-    "^.+\\.jsx?$": "babel-jest"
+    '^.+\\.jsx?$': 'babel-jest',
   },
   testPathIgnorePatterns: ignoredPaths,
-  testEnvironment: "./src/utils/test/test-environment"
+  testEnvironment: './src/utils/test/test-environment',
 };

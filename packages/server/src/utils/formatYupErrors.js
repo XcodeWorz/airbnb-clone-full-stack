@@ -1,11 +1,10 @@
-export const formatYupErrors = err => {
-  console.log("err", err);
+export const formatYupErrors = (err) => {
   const errors = [];
   if (err && err.inner) {
-    err.inner.forEach(e => {
+    err.inner.forEach((e) => {
       errors.push({
         path: e.path,
-        message: e.message
+        message: e.message,
       });
     });
   }
