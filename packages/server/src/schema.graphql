@@ -5,6 +5,7 @@
 # import User from "./modules/user/user.graphql"
 
 # import CreateAirbnbInput from "./modules/airbnb/airbnb.graphql"
+# import Airbnb from "./modules/airbnb/airbnb.graphql"
 
 type Error {
   path: String
@@ -13,6 +14,7 @@ type Error {
 
 type Query {
   me: ProfileResponse
+  findAirbnbs: [Airbnb!]
 }
 
 type Mutation {
@@ -28,4 +30,5 @@ type Mutation {
   sendForgotPasswordEmail(email: String!): Boolean
   changePassword(newPassword: String!, key: String!): ForgetPasswordResponse!
   createAirbnb(data: CreateAirbnbInput!): Boolean
+  deleteAirbnb(id: ID!): Boolean
 }
