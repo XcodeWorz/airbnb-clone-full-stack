@@ -1,0 +1,16 @@
+input CreateAirbnbInput {
+  name: String!
+  description: String!
+  category: String!
+  price: Float!
+  guests: Int!
+  beds: Int!
+  baths: Int!
+  location: Location!
+  amenities: [String]
+}
+
+input Location {
+  type: String!
+  coordinates: [Float]!
+}

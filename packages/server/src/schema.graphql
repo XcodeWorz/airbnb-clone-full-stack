@@ -4,6 +4,8 @@
 # import ForgetPasswordResponse from "./modules/user/authResponse.graphql"
 # import User from "./modules/user/user.graphql"
 
+# import CreateAirbnbInput from "./modules/airbnb/airbnb.graphql"
+
 type Error {
   path: String
   message: String
@@ -25,4 +27,5 @@ type Mutation {
   logout: Boolean!
   sendForgotPasswordEmail(email: String!): Boolean
   changePassword(newPassword: String!, key: String!): ForgetPasswordResponse!
+  createAirbnb(data: CreateAirbnbInput!): Boolean
 }
