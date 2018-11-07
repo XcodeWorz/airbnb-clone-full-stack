@@ -3,6 +3,7 @@ import { login } from '../modules/user/login';
 import { logout } from '../modules/user/logout';
 import { createAirbnb } from '../modules/airbnb/create';
 import { sendForgotPasswordEmail, changePassword } from '../modules/user/forgotPassword';
+import { deleteAirbnb } from '../modules/airbnb/delete';
 
 const Mutation = {
   register,
@@ -11,6 +12,7 @@ const Mutation = {
   sendForgotPasswordEmail,
   changePassword,
   createAirbnb,
+  deleteAirbnb,
 };
 
 module.exports = { Mutation };
