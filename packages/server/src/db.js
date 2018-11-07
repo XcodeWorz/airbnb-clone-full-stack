@@ -3,13 +3,23 @@ const config = require('./config');
 
 mongoose.Promise = global.Promise;
 
-const connectDatabase = () => mongoose.connect(
-  process.env.DATABASE_URI || config.DATABASE_URI,
-  { useNewUrlParser: true },
-);
+const dbUri = process.env.DATABASE_URI
+  || `mongodb://${
+    !process.env.NODE_ENV || process.env.NODE_ENV === 'test' ? 'localhost' : 'mongo'
+  }:27017/${config.DATABASE_URI}`;
+
+export const connectDatabase = () => mongoose
+  .connect(
+    dbUri,
+    { useNewUrlParser: true, useCreateIndex: true },
+  )
+  .then(() => {
+    console.log(`[📚] Connected to Database ${dbUri}`);
+  })
+  .catch((err) => {
+    console.log('Not Connected to Database ERROR! ', err);
+  });
 
 mongoose.connection
   .once('open', () => console.log('[📚] Mongodb is up and running'))
   .on('error', console.error.bind(console, '[❌ ] MongoDB connection error:'));
-
-module.exports = connectDatabase;
