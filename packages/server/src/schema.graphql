@@ -6,6 +6,7 @@
 
 # import CreateAirbnbInput from "./modules/airbnb/airbnb.graphql"
 # import Airbnb from "./modules/airbnb/airbnb.graphql"
+# import createAirbnbResponse from "./modules/airbnb/airbnb.graphql"
 
 type Error {
   path: String
@@ -29,6 +30,6 @@ type Mutation {
   logout: Boolean!
   sendForgotPasswordEmail(email: String!): Boolean
   changePassword(newPassword: String!, key: String!): ForgetPasswordResponse!
-  createAirbnb(data: CreateAirbnbInput!): Boolean
+  createAirbnb(data: CreateAirbnbInput!): createAirbnbResponse!
   deleteAirbnb(id: ID!): Boolean
 }
