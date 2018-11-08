@@ -1,14 +1,16 @@
 import React from "react";
 import { BrowserRouter, Switch } from "react-router-dom";
 
+import FancyRoute from "./../components/FancyRoute";
+import AuthRoute from "./../components/AuthRoute";
+
 import Register from "./../pages/Register";
 import Login from "./../pages/Login";
 import Home from "./../pages/Home";
 import ForgotPassword from "./../pages/ForgotPassword";
 import ChangePassword from "../pages/ChangePassword";
+import CreateAirbnb from "../pages/CreateAirbnb";
 import ActionScreen from "./../pages/ActionScreen";
-
-import FancyRoute from "./../components/FancyRoute";
 
 export const Routes = () => (
   <BrowserRouter>
@@ -23,6 +25,7 @@ export const Routes = () => (
         component={ChangePassword}
       />
       <FancyRoute path="/m/" component={ActionScreen} />
+      <AuthRoute path="/create-airbnb" component={CreateAirbnb} />
     </Switch>
   </BrowserRouter>
 );
