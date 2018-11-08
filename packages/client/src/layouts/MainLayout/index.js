@@ -1,53 +1,37 @@
 import React, { Component } from "react";
 import styled from "styled-components";
 
-const logoSvg = require("./../../assets/logo.svg");
+import { Header } from "./components/Header";
 
-const MainLayout = styled.div`
+const MainLayoutWrapper = styled.div`
   height: 100vh;
   position: relative;
   display: flex;
   align-items: center;
   flex-direction: column;
-  justify-content: center;
-`;
-
-const Logo = styled.img`
-  width: 100px;
-  height: 100px;
-`;
-
-const Header = styled.div`
-  margin: 0 auto;
-  display: flex;
-  justify-content: center;
-  margin-bottom: 80px;
 `;
 
 const Content = styled.div`
   display: flex;
-  justify-content: center;
   margin: 0 auto;
-  max-width: 500px;
   width: 100%;
 `;
 
 const withMainLayout = ChildComponent => {
-  class FullPageLayout extends Component {
+  class MainLayout extends Component {
     render() {
+      const { session } = this.props;
       return (
-        <MainLayout>
-          <Header>
-            <Logo src={logoSvg} alt="logo" />
-          </Header>
+        <MainLayoutWrapper>
+          <Header session={session} />
           <Content>
             <ChildComponent {...this.props} />
           </Content>
-        </MainLayout>
+        </MainLayoutWrapper>
       );
     }
   }
-  return FullPageLayout;
+  return MainLayout;
 };
 
 export default withMainLayout;
