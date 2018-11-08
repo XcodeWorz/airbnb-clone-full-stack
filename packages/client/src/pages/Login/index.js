@@ -25,9 +25,12 @@ class Login extends Component {
       }
     } = values;
 
-    const { history } = this.props;
+    const {
+      history,
+      location: { state }
+    } = this.props;
 
-    if (!errors) history.push("/");
+    if (!errors) history.push(state ? state.next : "/");
   };
   render() {
     return (
