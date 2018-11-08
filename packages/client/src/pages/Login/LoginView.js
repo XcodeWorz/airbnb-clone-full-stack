@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { withFormik, Field } from "formik";
 import { Form, Icon, Button, Divider } from "antd";
 
-import { InputField } from "../../components/InputField";
+import { InputField } from "../../components/Fields/InputField";
 import { ErrorMessage } from "./../../components/ErrorMessage";
 
 import { loginSchema } from "@airbnb-clone/common";
