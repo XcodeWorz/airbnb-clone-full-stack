@@ -2,7 +2,6 @@ import redis from './redis';
 
 const { GraphQLServer } = require('graphql-yoga');
 const { importSchema } = require('graphql-import');
-const bodyParser = require('body-parser');
 
 const session = require('express-session');
 const RedisStore = require('connect-redis')(session);
@@ -12,12 +11,15 @@ const config = require('./config');
 const resolvers = require('./resolvers');
 const { connectDatabase } = require('./db');
 const { redisSessionPrefix } = require('./utils/constants');
+const { authMiddleware } = require('./middlewares/authMiddleware');
 
 const db = connectDatabase();
 const store = new RedisStore({
   client: redis,
   prefix: redisSessionPrefix,
 });
+
+const middlewares = [authMiddleware];
 
 const createServer = () => {
   const server = new GraphQLServer({
@@ -30,6 +32,7 @@ const createServer = () => {
       req: request,
       db,
     }),
+    middlewares,
   });
 
   server.express.use(

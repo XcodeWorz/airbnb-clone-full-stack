@@ -1,10 +1,6 @@
 import Airbnb from '../../../models/Airbnb';
 
 export const deleteAirbnb = async (_, { id }, { session }) => {
-  if (!session.userId) {
-    throw new Error('not authorized');
-  }
-
   const airbnb = await Airbnb.findById(id);
 
   if (!airbnb) {
