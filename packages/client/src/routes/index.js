@@ -15,7 +15,7 @@ import ActionScreen from "./../pages/ActionScreen";
 export const Routes = () => (
   <BrowserRouter>
     <Switch>
-      <FancyRoute exact path="/" component={Home} />
+      <AuthRoute exact path="/" component={Home} />
       <FancyRoute exact path="/register" component={Register} />
       <FancyRoute exact path="/login" component={Login} />
       <FancyRoute exact path="/forgot-password" component={ForgotPassword} />
@@ -25,7 +25,7 @@ export const Routes = () => (
         component={ChangePassword}
       />
       <FancyRoute path="/m/" component={ActionScreen} />
-      <AuthRoute path="/create-airbnb" component={CreateAirbnb} />
+      <AuthRoute needsAuth path="/create-airbnb" component={CreateAirbnb} />
     </Switch>
   </BrowserRouter>
 );

@@ -13,8 +13,21 @@ class FancyRoute extends React.Component {
   componentDidMount() {
     nprogress.done();
   }
+
   render() {
-    return <Route {...this.props} />;
+    const { component, ...rest } = this.props;
+    const renderMergedProps = (component, ...rest) => {
+      const finalProps = Object.assign({}, ...rest);
+      return React.createElement(component, finalProps);
+    };
+    return (
+      <Route
+        {...rest}
+        render={routeProps => {
+          return renderMergedProps(component, routeProps, rest);
+        }}
+      />
+    );
   }
 }
 
