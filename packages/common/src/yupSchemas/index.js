@@ -5,10 +5,13 @@ import {
   changePasswordSchema
 } from "./user";
 
+import { validAirbnbSchema } from "./airbnb";
+
 module.exports = {
   loginSchema,
   validUserSchema,
   changePasswordSchema,
   emailSchema,
-  changePasswordSchema
+  changePasswordSchema,
+  validAirbnbSchema
 };
