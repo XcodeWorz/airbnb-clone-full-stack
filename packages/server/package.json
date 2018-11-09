@@ -19,6 +19,7 @@
   "author": "Laura Coalla",
   "license": "ISC",
   "dependencies": {
+    "@airbnb-clone/common": "1.0.0",
     "bcrypt-nodejs": "^0.0.3",
     "body-parser": "^1.18.3",
     "connect-redis": "^3.4.0",
@@ -27,6 +28,7 @@
     "eslint-config-airbnb-base": "^13.1.0",
     "eslint-config-prettier": "^3.1.0",
     "eslint-plugin-import": "^2.14.0",
+    "express": "^4.16.4",
     "express-rate-limit": "^3.3.0",
     "express-session": "^1.15.6",
     "graphql-date": "^1.0.3",
@@ -39,9 +41,9 @@
     "prettier": "^1.14.3",
     "rate-limit-redis": "^1.5.0",
     "redis": "^2.8.0",
+    "shortid": "^2.2.14",
     "uuid": "^3.3.2",
-    "yup": "^0.26.6",
-    "@airbnb-clone/common": "1.0.0"
+    "yup": "^0.26.6"
   },
   "devDependencies": {
     "@babel/cli": "^7.1.2",
