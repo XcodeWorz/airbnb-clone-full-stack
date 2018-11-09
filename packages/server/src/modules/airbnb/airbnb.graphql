@@ -3,6 +3,8 @@ type createAirbnbResponse {
   result: Boolean
 }
 
+scalar Upload
+
 input CreateAirbnbInput {
   name: String!
   description: String!
@@ -14,6 +16,7 @@ input CreateAirbnbInput {
   latitude: Float!
   longitude: Float!
   amenities: [String]
+  image: Upload
 }
 
 type LocationType {
@@ -32,4 +35,6 @@ type Airbnb {
   baths: Int!
   location: LocationType!
   amenities: [String]
+  image: String
+  host: User!
 }
