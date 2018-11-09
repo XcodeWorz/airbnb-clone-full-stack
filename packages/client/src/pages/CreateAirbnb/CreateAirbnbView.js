@@ -85,6 +85,7 @@ export default withFormik({
     name: "",
     description: "",
     category: "",
+    image: null,
     price: 0,
     guests: 1,
     beds: 1,

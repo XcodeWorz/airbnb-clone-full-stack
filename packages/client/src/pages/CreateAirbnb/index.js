@@ -7,6 +7,7 @@ import withMainLayout from "./../../layouts/MainLayout";
 const CREATE_AIRBNB_MUTATION = gql`
   mutation createAirbnb(
     $name: String!
+    $image: Upload
     $description: String!
     $category: String!
     $price: Float!
@@ -20,6 +21,7 @@ const CREATE_AIRBNB_MUTATION = gql`
     createAirbnb(
       data: {
         name: $name
+        image: $image
         description: $description
         category: $category
         price: $price
@@ -50,7 +52,7 @@ class CreateAirbnb extends Component {
 
     if (errors) return null;
     const { history } = this.props;
-    history.push('/');
+    history.push("/");
   };
 
   render() {
