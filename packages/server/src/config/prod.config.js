@@ -5,4 +5,5 @@ module.exports = {
   PORT: 4000,
   SERVER_URL: 'http://localhost:4000',
   FRONTEND_URL: 'http://localhost:3000',
+  UPLOAD_PATH: '',
 };
