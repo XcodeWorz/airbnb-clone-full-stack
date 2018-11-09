@@ -4,6 +4,7 @@ import { Field } from "formik";
 import { InputField } from "../../../components/Fields/InputField";
 import { TextAreaField } from "../../../components/Fields/TextAreaField";
 import { DropdownField } from "../../../components/Fields/DropdownField";
+import { DropzoneField } from "../../../components/Fields/DropzoneField";
 
 const categories = [
   { id: "house", text: "House" },
@@ -37,6 +38,13 @@ export const Step1 = () => {
         placeholder="Category"
         values={categories}
         component={DropdownField}
+      />
+
+      <Field
+        name="image"
+        size="large"
+        placeholder="Image"
+        component={DropzoneField}
       />
     </Fragment>
   );
