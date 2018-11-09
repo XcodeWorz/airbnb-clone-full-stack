@@ -1,3 +1,4 @@
+import express from 'express';
 import redis from './redis';
 
 const { GraphQLServer } = require('graphql-yoga');
@@ -56,6 +57,8 @@ const createServer = () => {
     }
     return next(); // otherwise continue
   });
+
+  server.express.use('/images', express.static('images'));
 
   server.start(
     {
