@@ -13,14 +13,15 @@ class Home extends Component {
           _id
           name
           price
+          image
         }
       }
     `;
     return (
       <Query query={FIND_AIRBNBS_QUERY}>
         {({ loading, error, data }) => {
-          if (loading || error || !data.findAirbnbs) return null;
-          return <HomeView airbnbs={data.findAirbnbs} />;
+          if (error || !data.findAirbnbs) return null;
+          return <HomeView loading={loading} airbnbs={data.findAirbnbs} />;
         }}
       </Query>
     );
