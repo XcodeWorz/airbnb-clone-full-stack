@@ -23,12 +23,7 @@ class AuthRoute extends React.Component {
       <Query query={ME_QUERY}>
         {({ loading, error, data }) => {
           if (!data || loading) return null;
-          if (
-            this.props.needsAuth ||
-            error ||
-            !data.me ||
-            (data.me.errors && data.me.errors.length)
-          )
+          if (error || !data.me || (data.me.errors && data.me.errors.length))
             return (
               <Redirect
                 to={{
