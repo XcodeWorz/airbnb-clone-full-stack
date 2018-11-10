@@ -1,6 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
+import { Menu, Dropdown, Icon } from "antd";
 
 const logoSvg = require("./../../../../assets/logo.svg");
 
@@ -44,6 +45,8 @@ const Navbar = styled.ul`
   li {
     padding: 0 8px;
     border-bottom: 2px solid transparent;
+    cursor: pointer;
+
     &:hover {
       border-bottom: 1px solid ${props => props.theme.textColor};
     }
@@ -56,10 +59,26 @@ const Navbar = styled.ul`
   }
 `;
 
+const menu = (
+  <Menu>
+    <Menu.Item>
+      <a href="/profile">Profile</a>
+    </Menu.Item>
+    <Menu.Divider />
+    <Menu.Item>
+      <a href="/logout">Logout</a>
+    </Menu.Item>
+  </Menu>
+);
+
 const navBarList = session => {
   return session.email ? (
     <React.Fragment>
-      <li> {session.email} </li>
+      <Dropdown overlay={menu} placement="bottomRight">
+        <li>
+          {session.email} <Icon type="down" />
+        </li>
+      </Dropdown>
     </React.Fragment>
   ) : (
     <React.Fragment>
