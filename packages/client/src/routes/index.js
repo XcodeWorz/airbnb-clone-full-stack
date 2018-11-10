@@ -6,6 +6,7 @@ import AuthRoute from "./../components/AuthRoute";
 
 import Register from "./../pages/Register";
 import Login from "./../pages/Login";
+import Logout from "./../pages/Logout";
 import Home from "./../pages/Home";
 import ForgotPassword from "./../pages/ForgotPassword";
 import ChangePassword from "../pages/ChangePassword";
@@ -18,6 +19,7 @@ export const Routes = () => (
       <AuthRoute exact path="/" component={Home} />
       <FancyRoute exact path="/register" component={Register} />
       <FancyRoute exact path="/login" component={Login} />
+      <FancyRoute exact path="/logout" component={Logout} />
       <FancyRoute exact path="/forgot-password" component={ForgotPassword} />
       <FancyRoute
         exact
