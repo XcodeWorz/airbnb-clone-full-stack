@@ -13,6 +13,7 @@ const resolvers = require('./resolvers');
 const { connectDatabase } = require('./db');
 const { redisSessionPrefix } = require('./utils/constants');
 const { authMiddleware } = require('./middlewares/authMiddleware');
+const { userLoader } = require('./loaders/userLoader');
 
 const db = connectDatabase();
 const store = new RedisStore({
@@ -31,7 +32,7 @@ const createServer = () => {
       url: `${request.protocol}://${request.get('host')}`,
       session: request.session,
       req: request,
-      db,
+      userLoader: userLoader(),
     }),
     middlewares,
   });
