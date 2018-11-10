@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Mutation } from "react-apollo";
+import { Mutation, withApollo } from "react-apollo";
 import gql from "graphql-tag";
 
 import withFullPageLayout from "./../../layouts/FullPageLayout";
@@ -27,8 +27,11 @@ class Login extends Component {
 
     const {
       history,
-      location: { state }
+      location: { state },
+      client
     } = this.props;
+
+    client.resetStore();
 
     if (!errors) history.push(state ? state.next : "/");
   };
@@ -51,4 +54,4 @@ class Login extends Component {
   }
 }
 
-export default withFullPageLayout(Login);
+export default withFullPageLayout(withApollo(Login));
