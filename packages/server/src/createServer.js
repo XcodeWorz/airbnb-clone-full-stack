@@ -15,7 +15,8 @@ const { redisSessionPrefix } = require('./utils/constants');
 const { authMiddleware } = require('./middlewares/authMiddleware');
 const { userLoader } = require('./loaders/userLoader');
 
-const db = connectDatabase();
+connectDatabase();
+
 const store = new RedisStore({
   client: redis,
   prefix: redisSessionPrefix,
@@ -27,11 +28,12 @@ const createServer = () => {
   const server = new GraphQLServer({
     typeDefs: importSchema('src/schema.graphql'),
     resolvers,
-    context: ({ request }) => ({
+    context: ({ request, response }) => ({
       redis,
       url: `${request.protocol}://${request.get('host')}`,
       session: request.session,
       req: request,
+      res: response,
       userLoader: userLoader(),
     }),
     middlewares,
