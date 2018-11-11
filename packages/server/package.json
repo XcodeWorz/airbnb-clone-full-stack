@@ -21,6 +21,7 @@
   "dependencies": {
     "@airbnb-clone/common": "1.0.0",
     "bcrypt-nodejs": "^0.0.3",
+    "bluebird": "^3.5.3",
     "body-parser": "^1.18.3",
     "connect-redis": "^3.4.0",
     "cookie-parser": "^1.4.3",
