@@ -6,14 +6,7 @@ import { TextAreaField } from "../../../components/Fields/TextAreaField";
 import { DropdownField } from "../../../components/Fields/DropdownField";
 import { DropzoneField } from "../../../components/Fields/DropzoneField";
 
-const categories = [
-  { id: "house", text: "House" },
-  { id: "apartment", text: "Apartment" },
-  { id: "bungalow", text: "Bungalow" },
-  { id: "cabin", text: "Cabin" },
-  { id: "loft", text: "Loft" },
-  { id: "villa", text: "Villa" }
-];
+import { categories } from "@airbnb-clone/common";
 
 export const Step1 = () => {
   return (

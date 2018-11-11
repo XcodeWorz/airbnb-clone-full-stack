@@ -1,5 +1,5 @@
 import mongoose from 'mongoose';
-import { categories } from '@airbnb-clone/common';
+import { categoriesKeys, amenitiesKeys } from '@airbnb-clone/common';
 import { LocationSchema } from './Location';
 
 const AirbnbSchema = new mongoose.Schema(
@@ -11,7 +11,7 @@ const AirbnbSchema = new mongoose.Schema(
     images: [String],
     category: {
       type: String,
-      enum: categories,
+      enum: categoriesKeys,
     },
     guests: Number,
     beds: { type: Number, default: 1 },
@@ -19,7 +19,7 @@ const AirbnbSchema = new mongoose.Schema(
     host: { type: mongoose.Schema.Types.ObjectId, ref: 'User' },
     amenities: {
       type: [String],
-      enum: ['wifi', 'parking', 'swimming-pool'],
+      enum: amenitiesKeys,
     },
   },
   { timestamps: true },
