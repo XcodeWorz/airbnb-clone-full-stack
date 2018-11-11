@@ -41,9 +41,9 @@ export const Step1 = () => {
       />
 
       <Field
-        name="image"
+        name="images"
         size="large"
-        placeholder="Image"
+        placeholder="Images"
         component={DropzoneField}
       />
     </Fragment>
