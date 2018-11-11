@@ -16,7 +16,7 @@ input CreateAirbnbInput {
   latitude: Float!
   longitude: Float!
   amenities: [String]
-  image: Upload
+  images: [Upload!]
 }
 
 type LocationType {
@@ -35,6 +35,6 @@ type Airbnb {
   baths: Int!
   location: LocationType!
   amenities: [String]
-  image: String
+  images: [String]
   host: User!
 }

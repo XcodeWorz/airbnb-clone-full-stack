@@ -8,7 +8,7 @@ const AirbnbSchema = new mongoose.Schema(
     description: String,
     location: LocationSchema,
     price: Number,
-    image: String,
+    images: [String],
     category: {
       type: String,
       enum: categories,

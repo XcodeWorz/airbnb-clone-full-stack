@@ -3,7 +3,13 @@ const { Mutation } = require('./Mutation');
 
 module.exports = {
   Airbnb: {
-    image: (parent, _, { url }) => parent.image && `${url}/images/${parent.image}`,
+    images: (parent, _, { url }) => {
+      const updatedImages = [];
+      parent.images.forEach((image) => {
+        updatedImages.push(`${url}/images/${image}`);
+      });
+      return updatedImages;
+    },
     host: ({ host }, _, { userLoader }) => userLoader.load(host),
   },
   Query,

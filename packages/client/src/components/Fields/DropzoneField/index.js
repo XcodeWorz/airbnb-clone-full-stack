@@ -57,7 +57,7 @@ export class DropzoneField extends React.Component {
       form: { setFieldValue },
       field: { name }
     } = this.props;
-    setFieldValue(name, files[0]);
+    setFieldValue(name, files);
     this.setState({
       files: files.map(file => ({
         ...file,
@@ -83,7 +83,7 @@ export class DropzoneField extends React.Component {
       >
         <DropZoneWrapper>
           <Dropzone
-            multiple={false}
+            multiple={true}
             accept="image/jpeg, image/png"
             onDrop={this.upload}
           >
