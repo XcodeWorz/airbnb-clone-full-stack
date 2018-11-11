@@ -20,10 +20,12 @@ const Logo = styled.img`
 `;
 
 const HeaderWrapper = styled.div`
-  position: relative;
+  position: sticky;
+  z-index: 1;
   height: 80px;
   max-height: 80px;
   width: 100%;
+  box-shadow: ${props => props.theme.boxShadowBase};
 `;
 
 const HeaderContent = styled.div`
@@ -32,7 +34,6 @@ const HeaderContent = styled.div`
   justify-content: space-between;
   position: relative;
   line-height: 80px;
-  box-shadow: ${props => props.theme.boxShadowBase};
 `;
 
 const Navbar = styled.ul`

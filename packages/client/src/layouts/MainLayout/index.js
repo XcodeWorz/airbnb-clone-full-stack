@@ -15,6 +15,7 @@ const MainLayoutWrapper = styled.div`
 const Content = styled.div`
   position: relative;
   margin: 0 auto;
+  height: inherit;
   width: 100%;
   max-width: 960px;
 `;
