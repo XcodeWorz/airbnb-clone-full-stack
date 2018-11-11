@@ -7,7 +7,7 @@ import withMainLayout from "./../../layouts/MainLayout";
 const CREATE_AIRBNB_MUTATION = gql`
   mutation createAirbnb(
     $name: String!
-    $image: Upload
+    $images: [Upload!]
     $description: String!
     $category: String!
     $price: Float!
@@ -21,7 +21,7 @@ const CREATE_AIRBNB_MUTATION = gql`
     createAirbnb(
       data: {
         name: $name
-        image: $image
+        images: $images
         description: $description
         category: $category
         price: $price
