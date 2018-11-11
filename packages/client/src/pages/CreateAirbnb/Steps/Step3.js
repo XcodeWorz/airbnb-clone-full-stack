@@ -3,6 +3,7 @@ import { Field } from "formik";
 
 import { DropdownField } from "../../../components/Fields/DropdownField";
 import { InputField } from "../../../components/Fields/InputField";
+import { LocationField } from "../../../components/Fields/LocationField";
 
 import { amenities } from "@airbnb-clone/common";
 
@@ -10,20 +11,10 @@ export const Step3 = () => {
   return (
     <Fragment>
       <Field
-        name="latitude"
+        name="location"
         size="large"
-        placeholder="Latitude"
-        style={{ width: "100%" }}
-        useNumberComponent={true}
-        component={InputField}
-      />
-      <Field
-        name="longitude"
-        size="large"
-        style={{ width: "100%" }}
-        placeholder="Longitude"
-        useNumberComponent={true}
-        component={InputField}
+        placeholder="Location"
+        component={LocationField}
       />
       <Field
         name="amenities"

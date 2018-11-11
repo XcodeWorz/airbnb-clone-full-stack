@@ -11,6 +11,8 @@ import "./style.less";
 
 const theme = {
   primaryColor: "#FF5A5F",
+  focusColor: "#ff8282",
+  lightFocusColor: "rgba(255, 90, 95, 0.2)",
   linkColor: "#008489",
   textColor: "#484848",
   textColorSecondary: "#585A3A",
