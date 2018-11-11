@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { Carousel } from "antd";
+import { Link } from "react-router-dom";
 import styled from "styled-components";
 
 const HomeContainer = styled.div`
@@ -63,14 +64,17 @@ export default class HomeView extends Component {
         <HomeContainer>
           {airbnbs.map(airbnb => {
             return (
-              <Card key={airbnb._id}>
-                <Carousel>
-                  <img alt="example" src={airbnb.image} />
-                  <img alt="example" src={airbnb.image} />
-                </Carousel>
-                <Name>{airbnb.name}</Name>
-                <Price>{airbnb.price}€ per night</Price>
-              </Card>
+              <Link to={`/view/${airbnb._id}`} key={airbnb._id}>
+                <Card>
+                  <Carousel>
+                    {airbnb.images.map((image, i) => {
+                      return <img alt="example" key={i} src={image} />;
+                    })}
+                  </Carousel>
+                  <Name>{airbnb.name}</Name>
+                  <Price>{airbnb.price}€ per night</Price>
+                </Card>
+              </Link>
             );
           })}
         </HomeContainer>

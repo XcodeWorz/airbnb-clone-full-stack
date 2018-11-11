@@ -13,7 +13,7 @@ class Home extends Component {
           _id
           name
           price
-          image
+          images
         }
       }
     `;
