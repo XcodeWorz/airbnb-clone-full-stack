@@ -35,8 +35,6 @@ export const createAirbnb = async (_, { data }, { session }) => {
 
     const uploadedImagesUrls = await Promise.all(images.map(processUpload));
 
-    console.log('uploadedImagesUrls', uploadedImagesUrls);
-
     const newAirbnb = {
       location: { type: 'Point', coordinates: [latitude, longitude] },
       images: uploadedImagesUrls,
@@ -51,7 +49,6 @@ export const createAirbnb = async (_, { data }, { session }) => {
       result: true,
     };
   } catch (e) {
-    console.log('erorrrr', e);
     const { path, message } = formatYupErrors(e)[0];
     return handleErrors(path, message);
   }
