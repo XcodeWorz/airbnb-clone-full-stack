@@ -7,7 +7,8 @@ import {
 import userMessages from "./utils/validationMessages/userMessages";
 import airbnbMessages from "./utils/validationMessages/airbnbMessages";
 import { validAirbnbSchema } from "./yupSchemas/airbnb";
-import categories from "./utils/constants";
+import * as amenitiesValues from "./utils/amenitiesValue";
+import * as constants from "./utils/constants";
 
 module.exports = {
   loginSchema,
@@ -15,7 +16,8 @@ module.exports = {
   emailSchema,
   changePasswordSchema,
   userMessages,
-  categories,
   validAirbnbSchema,
-  airbnbMessages
+  airbnbMessages,
+  ...amenitiesValues,
+  ...constants
 };

@@ -1,6 +1,6 @@
 import * as yup from "yup";
 import airbnbMessages from "./../utils/validationMessages/airbnbMessages";
-import { categories } from "./../utils/constants";
+import { categoriesKeys } from "./../utils/constants";
 
 const nameValidation = yup
   .string()
@@ -16,7 +16,7 @@ const descriptionValidation = yup
 
 const categoryValidation = yup
   .mixed()
-  .oneOf(categories)
+  .oneOf(categoriesKeys)
   .required();
 const priceValidation = yup.number().min(1, airbnbMessages.priceTooCheap);
 
